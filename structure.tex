@@ -1,0 +1,192 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Article Notes
+% Structure Specification File
+% Version 1.0 (1/10/15)
+%
+% This file has been downloaded from:
+% http://www.LaTeXTemplates.com
+%
+% Authors:
+% Vel (vel@latextemplates.com)
+% Christopher Eliot (christopher.eliot@hofstra.edu)
+% Anthony Dardis (anthony.dardis@hofstra.edu)
+%
+% License:
+% CC BY-NC-SA 3.0 (http://creativecommons.org/licenses/by-nc-sa/3.0/)
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%----------------------------------------------------------------------------------------
+%	REQUIRED PACKAGES
+%----------------------------------------------------------------------------------------
+
+\usepackage[includeheadfoot,columnsep=2cm, left=1in, right=1in, top=.5in, bottom=.5in]{geometry} % Margins
+
+\usepackage[T1]{fontenc} % For international characters
+\usepackage{XCharter} % XCharter as the main font
+
+\usepackage[english]{babel} % Use english by default
+
+% maths packages
+
+\usepackage{amsmath}
+\usepackage{xfrac}
+\usepackage{multirow}
+\usepackage{float}
+\usepackage{xcolor}
+\usepackage{enumerate}
+\usepackage{listings}
+
+%----------------------------------------------------------------------------------------
+%	CUSTOM COMMANDS
+%----------------------------------------------------------------------------------------
+
+\newcommand{\articletitle}[1]{\renewcommand{\articletitle}{#1}} % Define a command for storing the article title
+
+\newcommand{\datenotesstarted}[1]{\renewcommand{\datenotesstarted}{#1}} % Define a command to store the date when notes were first made
+\newcommand{\docdate}[1]{\renewcommand{\docdate}{#1}} % Define a command to store the date line in the title
+
+\newcommand{\docauthor}[1]{\renewcommand{\docauthor}{#1}} % Define a command for storing the article notes author
+
+% Define a command for the structure of the document title
+\newcommand{\printtitle}{
+\begin{center}
+\topskip0pt
+\vspace*{\fill}
+\textbf{\Huge{The Notes Project}}
+
+\vspace{2ex}
+
+\textbf{\huge{\articletitle}}
+
+\vspace{1ex}
+
+\Large\docdate \\
+\vspace{1ex}
+\Large\docauthor \\
+\vspace*{\fill}
+
+\end{center}
+}
+
+% \renewcommand{\theenumii}{\alph{enumii}.}
+
+\usepackage{fancyhdr}
+
+\newcommand{\ls}[2]{\sum_{#1=1}^{#2}}
+
+\newcommand{\comment}[1]{%
+  \text{\phantom{(#1)}} \tag{#1}
+}
+
+%----------------------------------------------------------------------------------------
+%	STRUCTURE MODIFICATIONS
+%----------------------------------------------------------------------------------------
+
+\setlength{\parskip}{3pt} % Slightly increase spacing between paragraphs
+
+% Uncomment to center section titles
+\usepackage{sectsty}
+\sectionfont{\centering}
+
+% Uncomment for Roman numerals for section numbers
+\renewcommand\thesection{\Roman{section}}
+
+
+\usepackage{pifont}
+
+\usepackage{tikz, pgfplots}
+\pgfplotsset{compat=1.18}
+\usetikzlibrary{positioning}
+
+\usepackage{gensymb}
+
+
+% ------------------------
+%        PIE CHART
+% ------------------------
+
+\newcommand{\pieslice}[6][black!10]{
+%%% Usage: \pieslice[color]{total}{start angle}{end angle}{data value}{label}
+  % calculate start and end points of arc
+  \pgfmathparse{#3/#2*360}
+  \let\a\pgfmathresult
+  \pgfmathparse{#4/#2*360}
+  \let\b\pgfmathresult
+
+  % calculate mid angle of arc
+  \pgfmathparse{0.5*\a+0.5*\b}
+  \let\midangle\pgfmathresult
+
+  % draw slice
+  \draw[fill=#1] (0,0) -- (\a:1) arc (\a:\b:1) -- cycle;
+
+  % outer label
+  \node[label=\midangle:{\small#6}] at (\midangle:1) {};
+
+  % inner label
+  \pgfmathparse{min((\b-\a-10)/110*(-0.3),0)}
+  \let\temp\pgfmathresult
+  \pgfmathparse{max(\temp,-0.5) + 0.8}
+  \let\innerpos\pgfmathresult
+  \pgfmathparse{(\b-\a)/3.6} % convert slice size to percentage
+  \let\percentage\pgfmathresult
+  \node at (\midangle:\innerpos) {\small\pgfmathprintnumber[fixed,precision=1]{\percentage}\%};
+}
+
+\newcommand{\pie}[2][{{"black!10"}}]{
+%%% Usage: \pie[{colour palette array}]{{label/value array}}
+  % init colour palette
+  \pgfmathparse{dim(#1)} % find N of array
+  \let\paletteDim\pgfmathresult
+  \newcounter{colourIndex}
+
+  % get total for dividing pie into sectors
+  \newcounter{total}
+  \foreach \val/\name in #2 {
+    \addtocounter{total}{\val}
+  }
+
+  \newcounter{a}
+  \newcounter{b}
+  \foreach \val/\name in #2 {
+    \setcounter{a}{\value{b}}
+    \addtocounter{b}{\val}
+
+    % get colour from palette
+    \pgfmathparse{#1[\thecolourIndex]}
+    \let\colour\pgfmathresult
+
+    \pieslice[\colour]{\thetotal}{\thea}{\theb}{\val}{\name}
+
+    % increment colour palette
+    \stepcounter{colourIndex}
+    \ifnum \thecolourIndex=\paletteDim \setcounter{colourIndex}{0}\fi
+  }
+}
+
+\def\palette{{"blue!60","cyan!50","yellow!50","orange!60","red!60",
+    "teal!50","brown!50!black!50","purple!50","lime!50!black!30"}}
+    
+    
+% ---------------------------
+%           TALLY
+% ---------------------------
+
+\newcount\tmpnum
+\def\tallymarks#1{\leavevmode \lower1bp\vbox to9bp{}%
+   \tmpnum=#1
+   \loop \ifnum\tmpnum<5 \kern1bp \tallynum\tmpnum \else \tallyV \fi
+         \advance\tmpnum by-5
+         \ifnum\tmpnum>0 \repeat
+}
+\def\tallynum#1{\bgroup\tmpnum=#1\relax
+   \loop \ifnum\tmpnum>0
+         \kern1bp \tallyI \kern1bp
+         \advance\tmpnum by-1
+         \repeat
+   \egroup
+}
+\def\tallyI{\pdfliteral{q .5 w 0 -1 m 0 8 l S Q}}
+\def\tallyV{\kern1bp\pdfliteral{q .5 w -1 0 m 9 7 l S Q}\tallynum4\kern1bp }
+
