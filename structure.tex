@@ -36,6 +36,7 @@
 \usepackage{xcolor}
 \usepackage{enumerate}
 \usepackage{listings}
+\usepackage{amsfonts}
 
 %----------------------------------------------------------------------------------------
 %	CUSTOM COMMANDS
@@ -78,6 +79,16 @@
 \newcommand{\comment}[1]{%
   \text{\phantom{(#1)}} \tag{#1}
 }
+
+\newlength\dlf  % Define a new measure, dlf
+\newcommand{\alignedbox}[2]{
+% Argument #1 = before & if there were no box (lhs)
+% Argument #2 = after & if there were no box (rhs)
+&  % Alignment sign of the line
+{\settowidth\dlf{#1}\addtolength\dlf{\fboxsep+\fboxrule} \hspace{-\dlf} \boxed{#1 #2}}
+}
+\newcommand{\Perm}[2]{{}^{#1}\!P_{#2}}%
+\newcommand{\Comb}[2]{{}^{#1}C_{#2}}%
 
 %----------------------------------------------------------------------------------------
 %	STRUCTURE MODIFICATIONS
