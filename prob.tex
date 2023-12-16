@@ -1,0 +1,1403 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Article Notes
+% LaTeX Template
+% Version 1.0 (1/10/15)
+%
+% This template has been downloaded from:
+% http://www.LaTeXTemplates.com
+%
+% Authors:
+% Vel (vel@latextemplates.com)
+% Christopher Eliot (christopher.eliot@hofstra.edu)
+% Anthony Dardis (anthony.dardis@hofstra.edu)
+%
+% License:
+% CC BY-NC-SA 3.0 (http://creativecommons.org/licenses/by-nc-sa/3.0/)
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%----------------------------------------------------------------------------------------
+%	PACKAGES AND OTHER DOCUMENT CONFIGURATIONS
+%----------------------------------------------------------------------------------------
+
+\documentclass[
+10pt, % Default font size is 10pt, can alternatively be 11pt or 12pt
+a4paper, % Alternatively letterpaper for US letter
+% twocolumn, % Alternatively onecolumn
+% landscape % Alternatively portrait
+]{report}
+
+\input{structure.tex} % Input the file specifying the document layout and structure
+
+%----------------------------------------------------------------------------------------
+%	ARTICLE INFORMATION
+%----------------------------------------------------------------------------------------
+
+\articletitle{Probability Theory} % The title of the article
+
+\datenotesstarted{December 15, 2023} % The date when these notes were first made
+\docdate{\datenotesstarted; rev. \today} % The date when the notes were lasted updated (automatically the current date)
+
+\docauthor{Keval Mehta, Divyansha Sachdeva} % Your name
+
+%----------------------------------------------------------------------------------------
+
+\begin{document}
+
+\pagestyle{myheadings} % Use custom headers
+
+
+%----------------------------------------------------------------------------------------
+%	PRINT ARTICLE INFORMATION
+%----------------------------------------------------------------------------------------
+
+\thispagestyle{plain} % Plain formatting on the first page
+
+\printtitle % Print the title
+
+%----------------------------------------------------------------------------------------
+%	ARTICLE NOTES
+%----------------------------------------------------------------------------------------
+
+\part{Introduction to Probability Theory}
+
+\section{Basic Definitions}
+\begin{description}
+\item[Sample Space \((S/\Omega)\)] The set of all possible outcomes.
+\item[Event] A subset of the sample space.
+\item[Independent Events] Events A \& B defined on \(\Omega\) are independent if they are not affected  by each other.
+\item[Mutually Exclusive Events] Events A \& B defined on \(\Omega\) are mutually exclusive if they cannot occur simultaneously.
+\item[Exhaustive Events] Events are exhaustive if their union is equal to the sample space.
+\end{description}
+
+
+
+\section{Types of Probability}
+\subsection{Classical Definition of Probability}
+    If a random experiment has \(n\) mutually exclusive, equally likely and exhaustive outcomes, and \(m\) of them are favourable to event A, then probability of happening of event A is given by:
+    \[
+    P(A)=\frac{\text{favourable events}}{\text{total events}}=\frac{m}{n}
+    \]
+Properties
+\begin{enumerate}
+\item \(0\leq P(A) \leq 1\)
+\item \(P(A')=1-P(A)\)
+\end{enumerate}
+
+\subsection{Empirical/Relative Definition of Probability}
+ If an experiment is repeated \(n\) times, as \(n\) tends to \(\infty\) and it produces \(m\) outcomes favourable to event A, then probability of happening of event A is given by:
+\[
+P(A)=\lim_{n\to\infty}\frac{m}{n}
+\]
+It is useful for unequally likely events, or countably infinite sample spaces.
+
+\subsection{Axiomatic Definition of Probability}
+    Let \(\Omega\)/S be a sample space, A be any event defined on sample space, then function P is said to be probability function on probability measure if it satisfies the following axioms.
+    \begin{itemize}
+    \item \(P(A)\geq 0\)
+    \item \(P(\Omega)=1\)
+    \item For A \& B, any two mutually exclusive events defined on sample space \(\Omega\), \(P(A\cup B) = P(A)+P(B)\)
+    \end{itemize}
+    
+
+\section{Various Theorems and Identities}
+\paragraph{Addition Theorem:}
+\[
+P\left(\bigcup_{i=1}^n P(A_i)\right)=\sum_{i=1}^n P(A_i) - \mathop{\sum^n \sum^n}\limits_{0 \leq i < j=1} P(A_i \cap A_j) + \mathop{\sum^n \sum^n \sum^n}\limits_{0 \leq i < j < k=1} P(A_i \cap A_j \cap A_k) \dots \]
+
+
+\paragraph{Conditional Probability:}
+
+If A \& B are two events, probability of happening of event A if B has already happened is given by:
+
+\[
+P(A|B) = \frac{P(A\cap B)}{P(B)}
+\]
+Similarly, 
+\[
+P(B|A) = \frac{P(A\cap B)}{P(A)}
+\]
+
+\paragraph{Multiplication Theorem:}
+
+\begin{align*}
+    P(A\cap B) &= P(A|B) \cdot P(B) \\
+               &= P(B|A) \cdot P(A)
+\end{align*}
+
+\paragraph{Bayes' Theorem}
+If \(A_1, A_2, \dots A_n\) are \(n\) events defined on sample space such that \(\bigcup_{i=1}^n P(A_i)=1\) and \\ \(\bigcap_{i=1}^n P(A_i)=\phi\), B be an event defined on same sample space such that \(B\subseteq \cup A_i, P(B)\neq 0\):
+\[
+P(A_i| B) = \frac{P(B|A_i)\cdot P(A_i)}{\sum P(B|A_i)\cdot P(A_i)}
+\]
+
+\section{More Definitions}
+\begin{description}
+  \item[Random Variable]
+    A real-valued function defined on sample space.
+  \item[Probability Distribution]
+    The set of pairs of values of a random variable and the probability of those values.
+  \item[Probability Mass Function]
+    Let \(X\) be a discrete random variable and \(P(X=x)\) be a function defined on X. \(P(X=x)\) is said to be its p.m.f. if it satisfies the following conditions: \\
+    1) \(P(x)\geq 0\) \\
+    2) \(\sum P(x) = 1\)
+  \item[Probability Density Function]
+    Let \(X\) be a continuous random variable and \(f(X=x)\) be a function defined on X. \(f(X=x)\) is said to be its p.d.f. if it satisfies the following conditions: \\
+    1) \(f(x)\geq 0\) \\
+    2) \(\int f(x) = 1\)
+  \item[Cumulative Distribution Function]
+    Let \(X\) be a random variable and \(P(X=x)\) be its p.m.f. Distribution function is given by:
+    \[
+    f(x)= 
+        \begin{cases}
+            \sum_{i=1}^x P(X=x),        & \text{for discrete r.v.} \\ \\
+            \int_{-\infty}^x f(x)dx,    & \text{for continuous r.v.}
+        \end{cases}
+    \]
+  \item[Expectation of a Random Variable]
+    Let \(X\) be a r.v. with p.m.f. \(P(X=x)\) (for discrete) and \(f(x)\) (for continuous). Then, expectation is denoted by \(E(X)\) and is given by:
+    \[
+    E(x)= 
+        \begin{cases}
+            \sum x\cdot P(X=x),    & \text{for discrete r.v.} \\ \\
+            \int x\cdot f(x)dx,    & \text{for continuous r.v.}
+        \end{cases}
+    \]
+\item[Variance of a Random Variable]
+    Let \(X\) be a r.v. with expectation \(E(X)\). Then, variance is denoted by \(Var(X)\) and is given by:
+    \[
+    Var(X) = E(X^2)-[E(X)]^2
+    \]
+\end{description}
+
+\section{Moments}
+\subsection{Definitions:}
+\begin{description}
+  \item[Central Moments]
+    \[
+    \mu_r = \frac{\sum(x_i-\mu)^r}{n}
+    \]
+  \item[Raw Moments]
+    \[
+    \mu'_r = \frac{\sum x_i^r}{n}
+    \]
+  \item[Arbitrary Moments]
+    \[
+    \mu_{r_A} = \frac{\sum(x_i-A)^r}{n}
+    \]
+    
+\end{description}
+
+\subsection{Functions:}
+\begin{description}
+  \item[Moment Generating Function]
+    \[
+    M_x(t) = E(e^{tx})
+    \]
+  \item[Cumulant Generating Function]
+    \[
+    K_x(t) = log(M_x(t)) = log(E(e^{tx}))
+    \]
+  \item[Characteristic Function ]
+    \[
+    \phi_x(t) = E(e^{itx})
+    \]
+    
+\end{description}
+
+\part{Discrete Probability Distributions}
+\section*{Syllabus}
+
+\begin{itemize}
+\item[] \textbf{Unit 1: Standard Univariate Distributions}
+\begin{enumerate}
+\item Distributions
+\begin{itemize}
+\item Uniform
+\item Bernoulli
+\item Binomial
+\item Poisson
+\item Geometric
+\item Negative Binomial
+\item Hypergeometric
+\end{itemize}
+\item The following aspects of the above distributions (wherever applicable) to be discussed
+\begin{itemize}
+\item Mean
+\item Mode
+\item Standard deviation
+\item Moment Generating Function
+\item Cumulant Generating Function
+\item Additive property
+\item Moments, Skewness and Kurtosis
+\item Limiting distribution
+\end{itemize}
+\item Fitting of Distribution
+\item Truncated Binomial and Truncated Poisson Distribution
+\end{enumerate}
+\item[] \textbf{Unit 2: Bivariate Distributions}
+\begin{enumerate}
+\item Joint Probability mass function for discrete random variables, their properties
+\item Marginal and conditional Distributions
+\item Independence of Random Variables
+\item Conditional Expectation \& Variance
+\item Coefficient of Correlation
+\item Transformation of Random Variables
+\item Trinomial distribution, Marginal \& Conditional distributions, and their means \& variances
+\item Correlation coefficient
+\item Extension to Multinomial distribution
+\end{enumerate}
+\end{itemize}
+
+\section*{Uniform Distribution:}
+\subsection*{Definition:}
+Let X be a discrete r.v. It follows uniform distribution if its p.m.f is:
+\[P(X=x)=\frac{1}{n};\; x=1, 2\dots n\] 
+It is denoted by \(X \sim D(n).\)
+
+\subsection*{Applications:}
+1) Tossing a coin, getting heads or tails. \\
+2) Selection of a student from a class.
+
+\subsection*{Expectation and Variance:}
+\begin{align*}
+    E(X) &= \sum x \cdot P(x) \\
+         &= \sum_{x=1}^n x\cdot\frac{1}{n} \\
+         &= \frac{1}{n} \cdot \frac{n(n+1)}{2} \\
+    E(X) &= \frac{(n+1)}{2} \\ \\
+    E(X^2) &= \sum x^2 \cdot P(x) \\
+           &= \sum_{x=1}^n x^2\cdot\frac{1}{n} \\
+           &= \frac{1}{n} \cdot \frac{n(n+1)(2n+1)}{6} \\
+    E(X^2) &= \frac{(n+1)(2n+1)}{6} \\ \\
+    Var(x) &= E(X^2) - [E(X)]^2 \\
+           &= \frac{(n+1)(2n+1)}{6} - \left[\frac{(n+1)}{2}\right]^2 \\
+           &= \frac{2n^2+3n+2}{6}-\frac{n^2+2n+1}{4} \\
+           &= \frac{4n^2+6n+4-3n^2-6n-3}{12} \\
+    Var(X) &= \frac{n^2-1}{12} = \frac{(n+1)(n-1)}{12}
+\end{align*}
+\newpage
+
+\subsection*{Moment Generating Function:}
+Given \(X \sim D(n), f(x)=\dfrac{1}{n}:\)
+\begin{align*}
+    M_x(t) &= E(e^{tx}) \\
+           &= \sum e^{tx} \cdot P(x) \\
+           &= \sum_{x=1}^n e^{tx} \cdot \frac{1}{n} \\
+           &= \frac{1}{n} \sum_{x=1}^n e^{tx} \\
+    M_x(t) &= \frac{e^t(1-e^{nt})}{n(1-e^t)}
+\end{align*}
+
+
+\newpage
+
+\section*{Bernoulli Distribution:}
+\subsection*{Definition:}
+Let X be a discrete r.v. It follows uniform distribution if its p.m.f is:
+\[
+    P(x)= 
+\begin{cases}
+    p^x q^{1-x},    & \text{if } x = 0,1\\
+    0,              & \text{otherwise}
+\end{cases}
+\]
+It is denoted by \(X \sim B(p).\)
+
+\subsection*{Applications:}
+1) Tossing a coin, getting heads or tails. \\
+2) Rolling a die, getting odd or even. \\
+3) Picking a card, getting red or black. \\
+4) Selecting item, defective or not defective.
+
+\subsection*{Expectation and Variance:}
+\begin{align*}
+    E(X) &= \sum x \cdot P(x) \\
+         &= \sum_{x=0}^1 x\cdot p^x q^{1-x} \\
+         &= 0\cdot p^0 \cdot q + 1\cdot p \cdot q^0 \\
+    E(X) &= p \\ \\
+    E(X^2) &= \sum x^2 \cdot P(x) \\
+           &= \sum_{x=0}^1 x^2\cdot p^x q^{1-x} \\
+           &= 0\cdot p^0 \cdot q + 1\cdot p \cdot q^0 \\
+    E(X^2) &= p \\ \\
+    Var(x) &= E(X^2) - [E(X)]^2 \\
+           &= p-p^2 \\
+           &= p(1-p) \\
+    Var(X) &= pq
+\end{align*}
+
+\subsection*{Moment Generating Function:}
+Given \(X \sim B(n), f(x)=p^x q^{1-x}:\)
+\begin{align*}
+    M_x(t) &= E(e^{tx}) \\
+           &= \sum e^{tx} \cdot P(x) \\
+           &= \sum_{x=0}^1 e^{tx} \cdot p^x q^{1-x} \\
+           &= e^{0t} \cdot q + e^{1t} \cdot p\\
+    M_x(t) &= q+pe^t
+\end{align*}
+\newpage
+
+\section*{Binomial Distribution:}
+\subsection*{Definition:}
+Let X be a discrete r.v. It follows uniform distribution if its p.m.f is:
+\[
+    P(x)= 
+\begin{cases}
+    \binom{n}{x}\;p^x q^{n-x},        & \text{if } x = 0,1\dots n\\
+    0,                              & \text{otherwise}
+\end{cases}
+\]
+It is denoted by \(X \sim B(n, p).\)
+
+\subsection*{Applications:}
+1) Tossing multiple coins, getting heads or tails certain number of times. \\
+2) Repeating any Bernoulli event \(n\) number of times.
+
+\subsection*{Expectation and Variance:}
+\begin{align*}
+    E(X) &= \sum x \cdot P(x) \\
+         &= \sum_{x=0}^n x\cdot \binom{n}{x} p^x q^{1-x} \\
+         &= 0 + 1\cdot \binom{n}{1} \cdot p^1 \cdot q^{n-1} + 2\cdot \binom{n}{2} \cdot p^2 \cdot q^{n-2} + \dots + n\cdot \Comb{n}{n} \cdot p^n \cdot q^{n-n} \\
+         &= npq^{n-1} + n(n-1)p^2 q^{n-2} + n(n-1)(n-2) p^3 q^{n-3} + \dots + np^n \\
+         &= np[q^{n-1}+(n-1)pq^{n-2}+\dots+p^{n-1}] \\
+\comment{\(p+q=1\)}         &= np(p+q)^{n-1} \\
+    E(X) &= np \\ \\
+    E(X^2) &= \sum x^2 \cdot P(x) \\
+           &= \sum_{x=0}^n x+x(x-1) \cdot \binom{n}{x} p^x q^{n-x} \\
+           &= \sum_{x=0}^n x \cdot \binom{n}{x} p^x q^{n-x}\sum_{x=0}^n x(x-1) \cdot \binom{n}{x} p^x q^{n-x} \\
+           &= np + \sum_{x=0}^n x(x-1) \cdot \binom{n}{x} p^x q^{n-x} \\
+           &= np + (0 + 0 + n(n-1)p^2 q^{n-2} + n(n-1)(n-2) p^3 q^{n-3} + \dots + np^n)\\
+           &= np + n(n-1)p(p+q)^{n-2} \\
+    E(X^2) &= np + n^2p^2 - np^2 \\ \\
+    Var(X) &= E(X^2) - [E(X)]^2 \\
+           &= np + n^2p^2 - np^2 - n^2p^2 \\
+           &= np - np^2 \\
+           &= np(1-p) \\
+    Var(X) &= npq
+\end{align*}
+Note:
+If \(X_1, X_2, X_3, \dots, X_k\) are independent B\((n, p)\) then \(\sum_{i=1}^k X_i \sim B(\sum_{i=1}^k n_i, p)\).
+
+\subsection*{Assumptions:}
+1) The number of trials \(n\) is fixed and finite. \\
+2) The probability of success \(p\) is the same for every trial. \\
+3) \(p+q=1\), where \(q\) is the probability of failure. \\
+4) \(p\) is independent for every trial.
+
+\subsection*{Moment Generating Function:}
+Given \(X \sim B(n, p), f(x)=\binom{n}{x} p^x q^{n-x}:\)
+\begin{align*}
+    M_x(t) &= E(e^{tx}) \\
+           &= \sum e^{tx} \cdot P(x) \\
+           &= \sum_{x=0}^n e^{tx} \cdot \binom{n}{x} \; p^x q^{n-x} \\
+           &= \sum_{x=0}^n \; \binom{n}{x} \; (pe^t)^x \; q^{n-x}\\
+    M_x(t) &= (q+pe^t)^n
+\end{align*}
+
+\newpage
+
+\section*{Poisson Distribution:}
+
+Let X be a discrete r.v. It follows uniform distribution if its p.m.f is:
+\[
+    P(x)= 
+\begin{cases}
+    \dfrac{e^{-\lambda} \lambda^x}{x!}        & \text{if } x = 0,1\dots\\
+    0,                              & \text{otherwise}
+\end{cases}
+\]
+It is denoted by \(X \sim P(\lambda).\)
+
+\subsection*{Expectation and Variance:}
+\begin{align*}
+    E(X) &= \sum_{n=0}^\infty x \cdot P(x) \\
+         &= \sum_{n=0}^\infty \frac{x\;e^{-\lambda}\;\lambda^x}{x!} \\
+         &= e^{-\lambda} \sum_{n=0}^\infty \frac{x\; \lambda^x}{x!} \\
+         &= e^{-\lambda} \left(0+\frac{\lambda}{1!}+\frac{\lambda^2}{2!}+ \dots \right) \\
+         &= e^{-\lambda} \cdot \lambda \left(1+ \frac{\lambda}{2!} \dots\right) \\
+         &= e^{-\lambda} \cdot \lambda \cdot e^{\lambda} && \sum_{n=0}^\infty \frac{\lambda^x}{x!} = e^{\lambda} \\
+    E(X) &= \lambda \\ \\
+    E(X^2) &= \sum x^2 \cdot P(x) \\
+           &= \sum_{n=0}^\infty \frac{x^2\;e^{-\lambda}\;\lambda^x}{x!} \\
+           &= e^{-\lambda} \sum_{n=0}^\infty \frac{x+x(x-1)\; \lambda^x}{x!} \\
+           &= e^{-\lambda} \left[ \sum_{n=0}^\infty \frac{x\; \lambda^x}{x!} + \sum_{n=0}^\infty \frac{x(x-1)\; \lambda^x}{x!}\right] \\
+           &= e^{-\lambda} \left[\lambda e^{\lambda}+ \left(0+0+\frac{2\lambda^2}{2!}+\frac{6\lambda^3}{3!}+ \dots \right)\right] \\
+           &= e^{-\lambda} \left[\lambda e^{\lambda}+ \lambda^2\left(1+\lambda+ \frac{\lambda^2}{2!} + \frac{\lambda^3}{3!}\dots \right)\right] \\
+           &= e^{-\lambda} \left[\lambda e^{\lambda}+ \lambda^2 e^{\lambda}\right] \\
+    E(X^2) &= \lambda+\lambda^2 \\ \\
+    Var(X) &= E(X^2) - [E(X)]^2 \\
+           &= \lambda+\lambda^2-\lambda^2 \\
+    Var(X) &= \lambda
+\end{align*}
+
+\subsection*{Assumptions}
+1) Mean = Variance = \(\lambda\). \\
+2) \(\sigma=\sqrt{\lambda}\). \\
+3) If \(X_1, X_2, X_3, \dots, X_k\) are independent P\((\lambda_i)\) then \(\sum_{i=1}^k X_i \sim P(\sum_{i=1}^k \lambda_i)\).
+
+\subsection*{Applications:}
+1) Probability of rain in many summers. \\
+2) Probability of a misprint in a page across a library. \\
+3) Probability of an accident in a large parking lot.
+
+\subsection*{Moment Generating Function:}
+Given \(X \sim P(\lambda), f(x)=\dfrac{e^{-\lambda} \lambda^x}{x!}:\)
+\begin{align*}
+    M_x(t) &= E(e^{tx}) \\
+           &= \sum e^{tx} \cdot P(x) \\
+           &= \sum_{x=0}^\infty e^{tx} \cdot \frac{e^{-\lambda} \lambda^x}{x!} \\
+           &= e^{-\lambda} \sum_{x=0}^\infty \frac{e^{tx} \lambda^x}{x!} \\
+           &= e^{-\lambda} \sum_{x=0}^\infty \frac{(\lambda e^t)^x}{x!} \\
+           &= e^{-\lambda} \cdot e^{\lambda e^t} && {\sum_{x=0}^\infty \frac{\lambda^x}{x!} = e^\lambda} \\
+    M_x(t) &= e^{\lambda(e^t-1)}
+\end{align*}
+
+\newpage
+\section*{Geometric Distribution:}
+\subsection*{Definition:}
+Let X be a discrete r.v. It follows uniform distribution if its p.m.f is:
+\paragraph{Type 1:}
+\[
+    P(x)= 
+\begin{cases}
+    p q^{x-1},    & \text{if } x = 1, 2, \dots\\
+    0,              & \text{otherwise}
+\end{cases}
+\]
+It is denoted by \(X \sim G(p).\) In this case, \(x\) is the number of trials.\\
+
+\paragraph{Expectation and Variance:}
+\begin{align*}
+    E(X) &= \sum x \cdot P(x) \\
+         &= \sum x \cdot pq^{x-1} \\
+         &= p\sum x q^{x-1} \\
+         &= p \left[ 0+1+2q+3q^2\dots \right] \\
+         &= p \cdot \frac{1}{p^2} \\
+    E(X) &= \frac{1}{p} \\ \\
+    E(X^2) &= \sum x^2 \cdot P(x) \\
+           &= \sum [x+x(x-1)] \cdot pq^{x-1} \\
+           &= \sum x \cdot pq^{x-1} + \sum x(x-1) \cdot pq^{x-1} \\
+           &= \frac{1}{p} + p\sum x(x-1) \cdot q^{x-1} \\
+           &= \frac{1}{p} + p(0 + 0 + 2q + 6q^2 + 12q^3 \dots)\\
+           &= \frac{1}{p} + 2pq(1+3q+6q^2 \dots) \\
+           &= \frac{1}{p} + p\cdot q\cdot \frac{1}{p^3} \\
+           &= \frac{p+2q}{p^2} \\
+           &= \frac{p+q+q}{p^2} \\
+    E(X^2) &= \frac{1+q}{p^2} \\ \\
+    Var(X) &= E(X^2) - [E(X)]^2 \\
+           &= \frac{q+1}{p^2} - \frac{1}{p^2} \\
+           &= \frac{q}{p^2} + \frac{1}{p^2} - \frac{1}{p^2} \\
+    Var(X) &= \frac{q}{p^2}
+\end{align*}
+
+\paragraph{Type 2:}
+\[
+    P(x)= 
+\begin{cases}
+    p q^x,    & \text{if } x = 0, 1, 2, \dots\\
+    0,              & \text{otherwise}
+\end{cases}
+\]
+It is denoted by \(X \sim G(p).\) In this case, \(x\) is the number of failures.\\
+
+\paragraph{Expectation and Variance:}
+\begin{align*}
+    E(X) &= \sum x \cdot P(x) \\
+         &= \sum x \cdot pq^x \\
+         &= p\sum x q^x \\
+         &= p [q+2q^2+3q^3\dots] \\
+         &= pq \left[1+2q+3q^2\dots \right] \\
+         &= pq \cdot \frac{1}{p^2} \\
+    E(X) &= \frac{q}{p} \\ \\
+    E(X^2) &= \sum x^2 \cdot P(x) \\
+           &= \sum [x+x(x-1)] \cdot pq^x \\
+           &= \sum x \cdot pq^x + \sum x(x-1) \cdot pq^x \\
+           &= \frac{q}{p} + p\sum x(x-1) \cdot q^x \\
+           &= \frac{q}{p} + p(0 + 0 + 2q^2 + 6q^3 + 12q^4 \dots)\\
+           &= \frac{q}{p} + 2pq^2(1+3q+6q^2 \dots) \\
+           &= \frac{q}{p} + 2p\cdot q^2\cdot \frac{1}{p^3} \\
+    E(X^2) &= \frac{q}{p} + \frac{2p^2}{q^2} \\ \\
+    Var(X) &= E(X^2) - [E(X)]^2 \\
+           &= \frac{q}{p} + \frac{2p^2}{q^2} - \frac{q^2}{p^2} \\
+           &= \frac{q}{p} + \frac{q^2}{p^2} \\
+           &= \frac{pq+q^2}{p^2} \\
+           &= \frac{q(p+q)}{p^2} \\
+    Var(X) &= \frac{q}{p^2}
+\end{align*}
+
+\paragraph{Moment Generating Function:}
+Given \(X \sim G(p), f(x)=pq^x:\)
+\begin{align*}
+    M_x(t) &= E(e^{tx}) \\
+           &= \sum e^{tx} \cdot P(x) \\
+           &= \sum_{x=0}^\infty e^{tx} \cdot pq^x \\
+           &= p \sum_{x=0}^\infty (qe^t)^x \\
+    M_x(t) &= \dfrac{p}{1-qe^t}
+\end{align*}
+
+\newpage
+
+\section*{Negative Binomial Distribution:}
+\subsection*{Definition:}
+Let X be a discrete r.v. It follows uniform distribution if its p.m.f is:
+\[
+    P(x)= 
+\begin{cases}
+    \binom{k+r-1}{r-1} p^r q^x,    & \text{if } x = 0, 1, 2, \dots\\
+    0,              & \text{otherwise}
+\end{cases}
+\]
+It is denoted by \(X \sim G(p).\) 
+
+\part{Continuous Probability Distributions}
+\section*{Syllabus}
+
+\begin{itemize}
+\item[] \textbf{Unit 1: Standard Univariate Distributions}
+\begin{enumerate}
+\item Distributions
+\begin{itemize}
+\item Rectangular
+\item Triangular
+\item Exponential
+\item Cauchy (with Single \& Double parameters)
+\item Gamma (with Single \& Double parameters)
+\item Beta (Type I \& Type II)
+\end{itemize}
+\item The following aspects of the above distributions (wherever applicable) to be discussed
+\begin{itemize}
+\item Mean
+\item Median
+\item Mode
+\item Standard deviation
+\item Moment Generating Function
+\item Additive property
+\item Cumulant Generating Function
+\item Skewness and Kurtosis
+\item Fitting of Distribution
+\item Interrelation between the distributions.
+\end{itemize}
+Normal Distribution
+\begin{itemize}
+\item Mean, Median, Mode
+\item Standard deviation
+\item Moment Generating function
+\item Cumulant Generating function
+\item Moments \& Cumulants (up to fourth order)
+\item Skewness \& kurtosis
+\item Mean absolute deviation
+\item Distribution of linear function of independent normal variables
+\item Fitting of Normal Distribution, q-q plot.
+\end{itemize}
+\item Log Normal Distribution: Derivation of mean \& variance.
+\end{enumerate}
+\item[] \textbf{Unit 2: Bivariate Distributions}
+\begin{enumerate}
+\item Joint Probability density function for Continuous random variables, their properties
+\item Marginal and conditional distributions
+\item Independence of Random Variables
+\item Conditional Expectation \& Variance
+\item Regression Function
+\item Coefficient of Correlation
+\item Transformation of Random Variables, Jacobian of transformation
+\item Bivariate Normal distribution, Marginal \& Conditional distributions, their means \& variances.
+\end{enumerate}
+\end{itemize}
+
+\subsection*{Continuous Probability Distributions}
+\subsubsection*{Rectangular Distribution:}
+\paragraph*{Definition:}
+If c.r.v \(X\sim U(a, b)\), then its p.d.f is:
+\[
+    f(x)= 
+\begin{cases}
+    \dfrac{1}{b-a},        & \text{if } a\leq x \leq b\\ \\
+    0,                    & \text{otherwise}
+\end{cases}
+\]
+
+\paragraph*{Expectation, Median, Mode and Variance:}
+\begin{align*}
+    E(X) &= \int_a^b x \cdot f(x) dx \\
+         &= \int_a^b \frac{x}{b-a} dx \\
+         &= \frac{x^2}{2(b-a)} \Biggr|_a^b \\
+         &= \frac{b^2-a^2}{2(b-a)} \\
+         &= \frac{(b+a)(b-a)}{2(b-a)} \\
+    E(X) &= \frac{b+a}{2} \\ \\
+    E(X^2) &= \int_a^b x^2 \cdot f(x) dx \\
+           &= \int_a^b \frac{x^2}{b-a} dx \\
+           &= \frac{x^3}{3(b-a)} \Biggr|_a^b \\
+           &= \frac{b^3-a^3}{2(b-a)} \\
+           &= \frac{(b^2+ba+a^2)(b-a)}{3(b-a)} \\
+    E(X^2) &= \frac{b^2+ba+a^2}{3}  \\ \\
+    Var(x) &= E(X^2) - [E(X)]^2 \\
+           &= \frac{b^2+ba+a^2}{3} - \left[\frac{b+a}{2}\right]^2 \\
+           &= \frac{4a^2+4ab+4b^2-3a^2-6ab-3b^2}{12} \\
+           &= \frac{b^2-2ab+a^2}{12} \\
+    Var(X) &= \frac{(b-a)^2}{12}
+\end{align*}
+
+Standard Deviation \(\sigma\):
+\begin{align*}
+    \sigma &= \sqrt{Var(x)} \\
+    \sigma &= \dfrac{(b-a)}{\sqrt{12}}
+\end{align*}
+
+To find median \(M\):
+\begin{align*}
+    \int_a^M f(x) dx &= \frac{1}{2} \\
+    \frac{M-a}{b-a} &= \frac{1}{2} \\
+    2M-2a &= b-a \\
+    M &= \frac{b+a}{2}
+\end{align*}
+
+
+Mode of Rectangular Distribution is every \(x\) such that \(a\leq x \leq b\) as:
+\[
+\frac{d}{dx}\;\frac{1}{b-a}=0
+\]
+Therefore, all points are its maxima and minima.
+
+\paragraph*{Moment Generating Function:}
+
+\begin{align*}
+    M_x(t) &= E(e^{tx}) \\
+           &= \int_a^b e^{tx} \cdot f(x) dx \\
+           &= \frac{1}{b-a} \; \frac{e^{tx}}{t} \Biggr|_a^b \\
+           &= \frac{1}{t(b-a)}\cdot (e^{bt}-e^{at}) \\
+    M_x(t) &= \frac{e^{bt}-e^{at}}{t(b-a)}
+\end{align*}
+
+First Raw Moment:
+\begin{align*}
+    \mu'_r &= \int_a^b x^r f(x) dx \\
+    \mu'_r &= \frac{1}{b-a}\left[\frac{b^{r+1}-a^{r+1}}{r+1}\right]
+\end{align*}
+
+\paragraph*{Cumulant Generating Function:}
+
+\[
+K_x(t)= log\left[\frac{e^{bt}-e^{at}}{t(b-a)}\right]
+\]
+
+C.G.F for \(t=1\):
+\[
+    K_x(1)= log\left[\frac{e^{b}-e^{a}}{b-a}\right]
+\]
+
+\paragraph*{Characteristic Function:}
+\begin{align*}
+    \phi_x(t) &= E(e^{itx}) \\
+    \phi _x(t) &= \frac{e^{ibt}-e^{iat}}{it(b-a)}
+\end{align*}
+    
+\subsubsection*{Triangular Distribution:}
+\paragraph*{Definition:}
+If c.r.v \(X\sim T(a, b)\) with mode \(c\), then its p.d.f is:
+\[
+    f(x)= 
+\begin{cases}
+    \dfrac{2(x-a)}{(b-a)(c-a)},        & \text{if } a\leq x \leq c\\ \\
+    \dfrac{2(b-x)}{(b-a)(b-c)},        & \text{if } c\leq x \leq b\\ \\
+    0,                                & \text{otherwise}
+\end{cases}
+\]
+
+\[
+f(c)=\frac{2}{b-a}
+\]
+
+\paragraph*{Moment Generating Function:}
+Moment Generating Function of \(X\sim T(a, b)\) with mode \(c\) is:
+\[
+M_x(t)=\frac{2}{t^2}\left[\frac{e^{at}}{(a-b)(a-c)}\frac{e^{ct}}{(c-a)(c-b)}\frac{e^{bt}}{(b-a)(b-c)}\right]
+\]
+
+If \(X\) \& \(Y\) are i.i.d. \(U(-a, a)\), then addition of \(X\) \& \(Y\), i.e. \(X+Y\sim T(-2a, 2a)\), with mode \(0\). \\
+Additionally, \(X-Y\sim T(-2a, 2a)\), with mode \(0\).
+
+\paragraph*{Properties:}
+1) \(- \infty < a < b < \infty, c \in [a, b]\) \\
+2) if \(C < E(X)\), \text{distribution is positively skewed.} \\
+    if \(C > E(X)\), \text{distribution is negatively skewed.} \\
+    if \(C=E(X)\), \text{distribution is symmetric.}
+
+
+\newpage
+
+\subsubsection*{Gamma Distribution:}
+\paragraph*{One Parameter:}
+If c.r.v \(X\sim \gamma(\lambda)\), then its p.d.f is:
+\[
+    f(x)= 
+\begin{cases}
+    \dfrac{e^{-x} x^{\lambda -1}}{\Gamma \lambda}, & \text{if } 0<  x < \infty,\;\lambda >0\\ \\
+    0,                                     & \text{otherwise}
+\end{cases}
+\]
+
+Properties:
+\[
+\Gamma n = \int_0^\infty e^{-x} x^{n -1} dx
+\]
+\[
+\Gamma (n+1) = n \Gamma n
+\]
+\[
+\Gamma n = (n-1)!
+\]
+
+\paragraph{Expectation and Variance:}
+\begin{align*}
+    E(X) &= \int_0^\infty x \cdot f(x) dx \\
+         &= \frac{x\;e^{-x} x^{\lambda -1}}{\Gamma \lambda} \\
+         &= \frac{e^{-x} x^{\lambda}}{\Gamma \lambda} \\
+         &= \frac{\Gamma (\lambda+1)}{\Gamma \lambda} \\
+         &= \frac{\lambda\;\Gamma \lambda}{\Gamma \lambda} \\
+    E(X) &= \lambda \\ \\
+    E(X^2) &= \int_0^\infty x^2 \cdot f(x) dx \\
+           &= \frac{x^2\;e^{-x} x^{\lambda -1}}{\Gamma \lambda} \\
+           &= \frac{e^{-x} x^{\lambda+1}}{\Gamma \lambda} \\
+           &= \frac{\Gamma (\lambda+2)}{\Gamma \lambda} \\
+           &= \frac{\lambda(\lambda+1)\Gamma \lambda}{\Gamma \lambda} \\
+    E(X^2) &= \lambda(\lambda+1) = \lambda^2+\lambda  \\ \\
+    Var(x) &= E(X^2) - [E(X)]^2 \\
+           &= (\lambda^2+\lambda) - \lambda^2 \\
+    Var(X) &= \lambda
+\end{align*}
+
+\paragraph{Moment Generating Function:}
+\[
+M_x(t)=(1-t)^{-\lambda}
+\]
+
+\paragraph{Cumulant Generating Function:}
+The value of the \(n^{\text{th}}\) cumulant is \(\lambda(n-1)!\).
+
+\paragraph{Raw Moments:}
+The value of the \(r^{\text{th}}\) raw moment is
+\begin{align*}
+    \mu'_r &= \int_0^\infty x^r\:f(x)dx \\
+           &= \int_0^\infty x^r \cdot \frac{e^{-x} x^{\lambda -1}}{\Gamma \lambda} \\
+           &= \frac{e^{-x} x^{\lambda + r -1}}{\Gamma \lambda} \\
+           &= \frac{\Gamma (\lambda+r)}{\Gamma \lambda} \\
+    \mu'_r &= \frac{\Gamma (\lambda+r)}{\Gamma \lambda} \\
+    \mu'_r &= \Pi_{i=0}^{n-1}(\lambda+i)
+\end{align*}
+
+\paragraph{Coefficients of Skewness and Kurtosis:}
+The coefficients of skewness and kurtosis for the gamma distribution are:
+\begin{align*}
+    \beta_1 &= \frac{\mu_3^2}{\mu_2^3} \\
+            &= \frac{(2\lambda)^2}{\lambda^3} \\
+    \beta_1 &= \frac{4}{\lambda} \\ \\
+    \gamma_1 &= \sqrt{\beta_1} \\
+             &= \sqrt{\frac{4}{\lambda}} \\
+    \gamma_1 &= \frac{2}{\sqrt{\lambda}} \\ \\
+    \beta_2 &= \frac{\mu_4}{\mu_2^2} \\
+            &= \frac{6\lambda}{\lambda^2} \\
+    \beta_2 &= \frac{6}{\lambda} \\ \\
+    \gamma_2 &= \beta_2 - 3 \\
+    \gamma_2 &= \frac{6}{\lambda} -3 \\
+\end{align*}
+
+Note:
+If \(X_1, X_2, X_3, \dots, X_n\) are independent \(\gamma(\lambda_i)\) then \(\sum_{i=1}^n X_i \sim \gamma(\sum_{i=1}^n \lambda_i)\).
+\\ \\
+\paragraph*{Two Parameter:}
+If c.r.v \(X\sim G(\lambda, a)\), then its p.d.f is:
+\[
+    f(x)= 
+\begin{cases}
+    \dfrac{a^\lambda e^{-ax} x^{\lambda -1}}{\Gamma \lambda}, & \text{if } 0<  x < \infty,\;\lambda >0, a>0\\ \\
+    0,                                     & \text{otherwise}
+\end{cases}
+\]
+
+\paragraph{Expectation and Variance:}
+\begin{align*}
+    E(X) &= \int_0^\infty x \cdot f(x) dx \\
+         &= \int_0^\infty\frac{a^\lambda e^{-ax} x^{\lambda -1}}{\Gamma \lambda} dx \\
+         &= \int_0^\infty\frac{a^\lambda e^{-u} u^{\lambda+1}}{a^{\lambda+1}\;\Gamma \lambda} du && u=ax,\;dx=\frac{du}{a},\; x=\frac{u}{a}\\
+         &= \int_0^\infty\frac{e^{-u} u^{\lambda+1}}{a^2} du \\
+         &= \frac{\lambda\;\Gamma \lambda}{a\;\Gamma \lambda} \\
+    E(X) &= \frac{\lambda}{a} \\ \\
+    E(X^2) &= \int_0^\infty x^2 \cdot f(x) dx \\
+         &= \int_0^\infty\frac{a^\lambda e^{-ax} x^{\lambda +1}}{\Gamma \lambda} dx \\
+         &= \int_0^\infty\frac{a^\lambda e^{-u} u^{\lambda+1}}{a^{\lambda+2}\;\Gamma \lambda} du && u=ax,\;dx=\frac{du}{a},\; x=\frac{u}{a}\\
+         &= \int_0^\infty\frac{e^{-u} u^{\lambda+1}}{a^2\;\Gamma \lambda} du \\
+         &= \frac{\Gamma (\lambda+2)}{a^2\;\Gamma \lambda} \\
+         &= \frac{\lambda(\lambda+1)\;\Gamma \lambda}{a^2\;\Gamma \lambda} \\
+    E(X^2) &= \frac{\lambda(\lambda+1)}{a^2} \\ \\
+    Var(x) &= E(X^2) - [E(X)]^2 \\
+           &= \frac{\lambda(\lambda+1)}{a^2} - \frac{\lambda}{a}^2 \\
+           &= \frac{\lambda^2+\lambda}{a^2} - \frac{\lambda}{a}^2 \\
+    Var(X) &= \frac{\lambda}{a^2}
+\end{align*}
+
+\paragraph{Moment Generating Function:}
+\[
+M_x(t)=(1-\sfrac{t}{a})^{-\lambda}
+\]
+
+\paragraph{Cumulant Generating Function:}
+The value of the \(n^{\text{th}}\) cumulant is \(\frac{\lambda(n-1)!}{a^n}\).
+
+\paragraph{Raw Moments:}
+The value of the \(r^{\text{th}}\) raw moment is
+\begin{align*}
+    \mu'_r &= \int_0^\infty x^r\:f(x)dx \\
+           &= \int_0^\infty x^r \cdot a^{\lambda} \cdot \frac{e^{-ax} x^{\lambda -1}}{\Gamma \lambda} \\
+           &= \int_0^\infty \frac{a^{\lambda} \cdot e^{-ax} x^{\lambda + r -1}}{\Gamma \lambda} \\
+           &= \frac{\Gamma (\lambda+r)}{\Gamma \lambda} \\
+    \mu'_r &= \frac{\Gamma (\lambda+r)}{\Gamma \lambda} \\
+    \mu'_r &= \Pi_{i=0}^{n-1}(\lambda+i)
+\end{align*}
+
+\paragraph{Coefficients of Skewness and Kurtosis:}
+The coefficients of skewness and kurtosis for the gamma distribution are:
+\begin{align*}
+    \beta_1 &= \frac{\mu_3^2}{\mu_2^3} \\
+            &= \dfrac{\sfrac{(2\lambda)^2}{\lambda^3}}{\sfrac{a^6}{a^6}} \\
+    \beta_1 &= \frac{4}{\lambda} \\ \\
+    \gamma_1 &= \sqrt{\beta_1} \\
+             &= \sqrt{\frac{4}{\lambda}} \\
+    \gamma_1 &= \frac{2}{\sqrt{\lambda}} \\ \\
+    \beta_2 &= \frac{\mu_4}{\mu_2^2} \\
+            &= \dfrac{\sfrac{6\lambda}{\lambda^2}}{\sfrac{a^4}{a^4}} \\
+    \beta_2 &= \frac{6}{\lambda} \\ \\
+    \gamma_2 &= \beta_2 - 3 \\
+    \gamma_2 &= \frac{6}{\lambda} -3 \\
+\end{align*}
+
+Note:
+If \(X_1, X_2, X_3, \dots, X_n\) are independent \(\gamma(\lambda_i, a)\) then \(\sum_{i=1}^n X_i \sim \gamma(\sum_{i=1}^n \lambda_i, a)\).
+
+\newpage
+
+\subsubsection*{Beta Distribution:}
+
+The p.d.f of the general beta function is given by:
+\[
+\int_a^b \dfrac{(x-a)^{m-1}(b-x)^{n-1}}{(b-a)^{m+n-1}}, a<x<b
+\]
+
+Types of \(\beta\) distribution: \\
+If \(a\neq 0\) \& \(b\neq 0\) or \(a\neq 0\) \& \(b \neq \infty\), it is called an incomplete beta distribution. \\
+If \(a=0\) \& \(b=1\), it is the first type of beta distribution. \\
+If \(a=0\) \& \(b=\infty\), it is the second type of beta distribution. \\
+
+\paragraph*{Type 1(\(\beta_1\))}
+If c.r.v \(X\sim \beta_1(m, n)\), then its p.d.f is:
+\[
+    f(x)= 
+\begin{cases}
+    \dfrac{x^{m-1}(1-x)^{n-1}}{\beta(m, n)}, & \text{if } 0\leq x \leq 1;m, n>0\\ \\
+    0,                                     & \text{otherwise}
+\end{cases}
+\]
+
+Properties:
+\[
+\beta(m, n) = \int_0^1 x^{m-1} (1-x)^{n-1} dx
+\]
+\[
+\beta(m, n) = \frac{\Gamma m \; \Gamma n}{\Gamma (m+n)}
+\]
+
+\paragraph{Expectation and Variance:}
+\begin{align*}
+    E(X) &= \int_0^1 x \cdot f(x) dx \\
+         &= \int_0^1 \frac{x\;x^{m-1}(1-x)^{n-1}}{\beta(m, n)} \\
+         &= \int_0^1 \frac{x^{m}(1-x)^{n-1}}{\beta(m, n)} \\
+         &= \frac{\beta(m+1, n)}{\beta(m, n)} \\
+         &= \frac{\Gamma (m+1) \; \Gamma n}{\Gamma (m+n+1)} \frac{\Gamma (m+n)}{\Gamma m \; \Gamma n} \\
+         &= \frac{m \Gamma m \; \Gamma n}{(m+n)\Gamma (m+n)} \frac{\Gamma (m+n)}{\Gamma m \; \Gamma n} \\
+    E(X) &= \frac{m}{m+n} \\ \\
+    E(X^2) &= \int_0^1 x^2 \cdot f(x) dx \\
+         &= \int_0^1 \frac{x^2\;x^{m-1}(1-x)^{n-1}}{\beta(m, n)} \\
+         &= \int_0^1 \frac{x^{m+1}(1-x)^{n-1}}{\beta(m, n)} \\
+         &= \frac{\beta(m+2, n)}{\beta(m, n)} \\
+         &= \frac{\Gamma (m+2) \; \Gamma n}{\Gamma (m+n+2)} \frac{\Gamma (m+n)}{\Gamma m \; \Gamma n} \\
+         &= \frac{(m+1)m \Gamma m \; \Gamma n}{(m+n+1)(m+n)\Gamma (m+n)} \frac{\Gamma (m+n)}{\Gamma m \; \Gamma n} \\
+    E(X^2) &= \frac{m(m+1)}{(m+n)(m+n+1)}  \\ \\
+    Var(x) &= E(X^2) - [E(X)]^2 \\
+           &= \frac{m(m+1)}{(m+n)(m+n+1)} - \frac{m}{m+n} \\
+           &= \frac{m}{m+n}\left[\frac{m+1}{m+n+1}-\frac{m}{m+n}\right] \\
+           &= \frac{m}{m+n}\left[\frac{(m+1)(m+n)-m(m+n+1)}{(m+n)(m+n+1)}\right] \\
+           &= \frac{m}{m+n}\left[\frac{m^2+mn+m+n-m^2-mn-m^2}{(m+n)(m+n+1)}\right] \\
+           &= \frac{m}{m+n}\left[\frac{n}{(m+n)(m+n+1)}\right] \\
+    Var(X) &= \frac{mn}{(m+n)^2(m+n+1)}
+\end{align*}
+
+Harmonic Mean:
+\begin{align*}
+    \frac{1}{HM} &= \int \frac{1}{x} f(x) dx \\
+    \frac{1}{HM} &= \int \frac{x^{m-2}(1-x)^{n-1}dx}{\beta(m, n)} \\
+    \frac{1}{HM} &= \frac{\beta(m-1, n)}{\beta(m, n)} \\
+             HM  &= \frac{\beta(m, n)}{\beta(m-1, n)} \\
+             HM  &= \frac{(m-1)\Gamma(m-1)\Gamma(m+n-1)}{(m+n-1)\Gamma(m+n-1) \Gamma(m-1)} \\
+    HM &= \frac{m-1}{m+n-1}
+\end{align*}
+    
+
+\paragraph{Raw Moments:}
+The value of the \(r^{\text{th}}\) raw moment is
+\begin{align*}
+    \mu'_r &= \int_0^1 x^r\:f(x)dx \\
+           &= \int_0^1 \frac{x^r\;x^{m-1}(1-x)^{n-1}}{\beta(m, n)} \\
+           &= \int_0^1 \frac{x^{m+r-1}(1-x)^{n-1}}{\beta(m, n)} \\
+           &= \frac{\beta(m+r, n)}{\beta(m, n)} \\
+           &= \frac{\Gamma (m+r) \; \Gamma n}{\Gamma (m+n+r)} \frac{\Gamma (m+n)}{\Gamma m \; \Gamma n} \\
+    \mu'_r &= \frac{\Gamma (m+r) \Gamma (m+n)}{\Gamma (m+n+r) \Gamma m} \\
+    \mu'_r &= \frac{\Pi_{i=0}^{n-1}(m+i)}{\Pi_{i=0}^{n-1}(m+n+i)}
+\end{align*}
+
+\newpage
+\paragraph*{Type 2(\(\beta_2\))}
+If c.r.v \(X\sim \beta_2(m, n)\), then its p.d.f is:
+\[
+    f(x)= 
+\begin{cases}
+    \dfrac{1}{\beta(m, n)}\dfrac{x^{m-1}}{(1+x)^{m+n}}, & \text{if } 0 < x < \infty\\ \\
+    0,                                     & \text{otherwise}
+\end{cases}
+\]
+
+Properties:
+\[
+\beta(m, n) = \int_0^\infty \dfrac{x^{m-1}}{(1+x)^{m+n}} dx
+\]
+\[
+\beta(m, n) = \frac{\Gamma m \; \Gamma n}{\Gamma (m+n)}
+\]
+
+\paragraph{Raw Moments:}
+The value of the \(r^{\text{th}}\) raw moment is
+\begin{align*}
+    \mu'_r &= \int_0^\infty x^r\:f(x)dx \\
+           &= \int_0^\infty x^r\;\dfrac{1}{\beta(m, n)}\dfrac{x^{m-1}}{(1+x)^{m+n}} \\
+           &= \frac{1}{\beta(m, n} \int_0^\infty \frac{x^{m+r-1}}{(1+x)^{n}} \\
+           &= \frac{\beta(m+r, n-r)}{\beta(m, n)} \\
+           &= \frac{\Gamma (m+r) \; \Gamma (n-r)}{\Gamma (m+n)} \frac{\Gamma (m+n)}{\Gamma m \; \Gamma n} \\
+    \mu'_r &= \frac{\Gamma (m+r) \Gamma (n-r)}{\Gamma m \; \Gamma n} \\
+    \mu'_r &= \frac{\Pi_{i=0}^{r-1}(m+i)}{\Pi_{i=0}^{r-1}(n-i-1)} 
+\end{align*}
+
+\paragraph{Expectation and Variance:}
+\begin{align*}
+    E(X) &= \mu'_1 \\
+         &= \frac{\Gamma (m+1) \Gamma (n-1)}{\Gamma m \; \Gamma n} \\
+         &= \frac{m \;\Gamma m \;\Gamma (n-1)}{\Gamma m \;(n-1) \; \Gamma (n-1)} \\
+    E(X) &= \frac{m}{n-1} \\ \\
+    E(X^2) &= \mu'_2 \\
+           &= \frac{\Gamma (m+2) \Gamma (n-2)}{\Gamma m \; \Gamma n} \\
+         &= \frac{m(m+1) \Gamma (m) \Gamma (n-2)}{\Gamma m (n-1)(n-2) \Gamma (n-2)} \\ 
+    E(X^2) &= \frac{m(m+1)}{(n-1)(n-2)}  \\ \\
+    Var(x) &= E(X^2) - [E(X)]^2 \\
+           &= \frac{m(m+1)}{(n-1)(n-2)} - \left(\frac{m}{n-1}\right)^2 \\
+           &= \frac{m}{n-1} \left( \frac{m+1}{(n-2)} - \frac{m}{(n-1)}\right) \\
+           &= \frac{m}{n-1} \left( \frac{(m+1)(n-1) - m(n-2)}{(n-1)(n-2)}\right) \\
+    Var(X) &= \frac{m(m+n-1)}{(n-1)^2(n-2)}
+\end{align*}
+
+Harmonic Mean:
+\begin{align*}
+    \frac{1}{HM} &= \int_0^\infty \frac{1}{x} f(x) dx \\
+    \frac{1}{HM} &= \int_0^\infty \dfrac{1}{\beta(m, n)}\dfrac{x^{m-2}}{(1+x)^{m+n}} \\
+    \frac{1}{HM} &= \frac{\beta(m-1, n+1)}{\beta(m, n)} \\
+             HM  &= \frac{\beta(m, n)}{\beta(m-1, n+1)} \\
+             HM  &= \frac{\Gamma m \Gamma n}{\Gamma (m+n)} \frac{\Gamma (m+n)}{\Gamma (m-1) \Gamma (n+1)} \\
+             HM  &= \frac{(m-1)\Gamma(m-1)\Gamma(n)}{\Gamma(m-1) n \Gamma n} \\
+    HM &= \frac{m-1}{n}
+\end{align*}
+
+\[
+\text{If } X \sim \beta_1(1, 1), X\sim U(0, 1).
+\]
+
+\newpage
+\subsubsection*{Exponential Distribution:}
+If c.r.v \(X\sim \text{exp}(\theta)\), then its p.d.f is:
+\[
+    f(x)= 
+\begin{cases}
+    \theta e^{-\theta x}                   & {\theta>0,\; 0<x<\infty} \\
+    0,                                     & \text{otherwise}
+\end{cases}
+\]
+
+\paragraph{Expectation and Variance:}
+\begin{align*}
+    E(X) &= \int_0^\infty x \cdot f(x) dx \\
+         &= \int_0^\infty x\theta e^{-\theta x} \\
+         &= \int_0^\infty \frac{u e^{-u}}{\theta} du && \theta x = u, \; dx = \frac{du}{\theta} \\
+         &= \frac{1}{\theta} \int_0^\infty u^{2-1} e^{-u} du \\
+         &= \frac{\Gamma 2}{\theta} \\
+         &= \frac{1!}{\theta} \\
+    E(X) &= \frac{1}{\theta} \\ \\
+    E(X^2) &= \int_0^1 x^2 \cdot f(x) dx \\
+         &= \int_0^\infty x^2\theta e^{-\theta x} \\
+         &= \int_0^\infty x\cdot \theta x e^{-\theta x} \\
+         &= \int_0^\infty \frac{u}{\theta} \frac{u e^{-u}}{\theta} du && \theta x = u, \; dx = \frac{du}{\theta} \\
+         &= \frac{1}{\theta^2} \int_0^\infty u^{3-1} e^{-u} du \\
+         &= \frac{\Gamma 3}{\theta^2} \\
+         &= \frac{2!}{\theta^2} \\
+    E(X^2) &= \frac{2}{\theta^2}  \\ \\
+    Var(X) &= E(X^2) - [E(X)]^2 \\
+    &= \frac{2}{\theta^2} - \frac{1}{\theta^2} \\
+    Var(X) &= \frac{1}{\theta^2}
+\end{align*}
+
+\paragraph{Moment Generating Function:}
+\[
+M_x(t)=(1-\sfrac{t}{\theta})^{-1}
+\]
+
+\paragraph{Cumulant Generating Function:}
+The value of the \(n^{\text{th}}\) cumulant is \(\dfrac{(n-1)!}{\theta^n}\).
+
+\paragraph{Raw Moments:}
+The value of the \(r^{\text{th}}\) raw moment is
+\begin{align*}
+    \mu'_r &= \int_0^\infty x^r\:f(x)dx \\
+           &= \int_0^\infty x^r \cdot \theta e^{-\theta x} dx \\
+           &= \int_0^\infty \left(\frac{u}{\theta}\right)^r\cdot\theta e^{-u}\cdot\frac{du}{\theta} && {u=\theta x} \\
+           &= \frac{1}{\theta^r} \int_0^\infty u^r e^{-u} du \\
+           &= \frac{\Gamma(r+1)}{\theta^r} \\
+    \mu'_r &= \frac{r!}{\theta^r}
+\end{align*}
+
+\paragraph{Coefficients of Skewness and Kurtosis:}
+The coefficients of skewness and kurtosis for the exponential distribution are:
+\begin{align*}
+    \beta_1 &= \frac{\mu_3^2}{\mu_2^3} \\
+            &= \frac{(\sfrac{2}{\theta^3})^2}{(\sfrac{1}{\theta^2})^3} \\
+    \beta_1 &= 4 \\ \\
+    \gamma_1 &= \sqrt{\beta_1} \\
+             &= \sqrt{4} \\
+    \gamma_1 &= 2 \\ \\
+    \beta_2 &= \frac{\mu_4}{\mu_2^2} \\
+            &= \frac{\sfrac{6}{\theta^4}}{(\sfrac{1}{\theta^2})^2} \\
+    \beta_2 &= 6 \\ \\
+    \gamma_2 &= \beta_2 - 3 \\
+             &= 6 - 3 \\
+    \gamma_2 &= 3 \\
+\end{align*}
+
+\newpage
+
+\subsubsection*{Normal Distribution:}
+
+If c.r.v \(X\sim N\) with mean \(\mu\) and variance \(\sigma^2\), then its p.d.f is:
+\[
+    f(x)= 
+\begin{cases}
+    \dfrac{1}{\sigma\sqrt{2\pi}} \; \text{exp} \left[ \dfrac{-1}{2}\left( \dfrac{x-\mu}{\sigma}\right)^2\right] & {-\infty < x < \infty, \;-\infty < \mu < \infty, \;0 < \sigma < \infty} \\
+    0,                                     & \text{otherwise}
+\end{cases}
+\]
+
+It is denoted as \(X\sim N(\mu, \sigma^2) \)
+
+\paragraph*{Properties:}
+1) The normal distribution follows a bell-shaped curve. \\
+2) In a normal distribution, mean=median=mode. \\
+3) The normal distribution is symmetric. \\
+4) The scale parameter \(\sigma\) distributes the curve in the following percentage: \\
+i) \(\mu \pm \sigma\) contains \(\sim68\%\) data \\
+ii) \(\mu \pm 2\sigma\) contains \(\sim95\%\) data \\
+iii) \(\mu \pm 3\sigma\) contains \(\sim99.73\%\) data \\
+5) \(Z=\frac{x-\mu}{\sigma} \sim\) s.n.d. i.e. \(N(0, 1)\).
+\[
+P(Z=z) = \frac{1}{\sqrt{2\pi}} \; e^{-\frac{1}{2}z^2}
+\]
+
+\paragraph*{Median and Mode:}
+
+Assuming median\(> \mu\),
+\begin{align*}
+    \implies \int_{-\infty}^\mu f(x)dx + \int_\mu^M f(x)dx &= \frac{1}{2} \\
+    \implies 1/2 + \int_\mu^M f(x)dx &= \frac{1}{2} \\
+    \implies \int_\mu^M f(x)dx &= 0 \\
+    \implies \int_\mu^M \dfrac{1}{\sigma\sqrt{2\pi}} \; e^{-\frac{1}{2}( \frac{x-\mu}{\sigma})^2} &= 0 \\
+    \implies \dfrac{1}{\sigma\sqrt{2\pi}} \int_\mu^M e^{-\frac{1}{2\sigma^2}(x-\mu)^2} &= 0 \\
+    \implies (x-\mu) \big|_\mu^M = 0 \\
+    \implies M - \mu = 0 \\
+    \implies M = \mu
+\end{align*}
+
+To find mode, we will use the first derivative test, i.e. \(f'(x) = 0\).
+\begin{align*}
+    log(f(x)) &= -log(\sigma\sqrt{2\pi}) - \frac{(x-\mu)^2}{2\sigma^2} \\
+    \text{Differentiating, we get} \\
+    \frac{f'(x)}{f(x)} &= -\frac{x-\mu}{\sigma^2} \\
+    \implies f(x) (x-\mu) &= 0 \\
+    \text{As \(f(x)\) cannot be 0 at the mode}, x-\mu &= 0 \\
+    \implies x &= \mu.
+\end{align*}
+Hence, the second property (mean = mode = median) is proved.
+
+\paragraph*{Moment Generating Function and Cumulant Generating Function:}
+
+\begin{align*}
+    M_x(t) &= E(e^{tx}) \\
+           &= \int_{-\infty}^\infty e^{tx} \cdot f(x) dx \\
+           &= \int_{-\infty}^\infty e^{tx} \cdot \dfrac{1}{\sigma\sqrt{2\pi}} \; e^{-\frac{1}{2}( \frac{x-\mu}{\sigma})^2} dx \\
+           &= \dfrac{1}{\sigma\sqrt{2\pi}} \int_{-\infty}^\infty e^{tx-\frac{1}{2}( \frac{x-\mu}{\sigma})^2} dx \\
+           \text{Let } z &= \frac{x-\mu}{\sigma} \\ \implies x &= \sigma z + \mu \\ \& \; dx &= \sigma dz \\
+           &= \dfrac{1}{\sigma\sqrt{2\pi}} \int_{-\infty}^\infty e^{t(\sigma z + \mu) - \frac{z^2}{2}} \sigma dz\\
+           &= \dfrac{1}{\sqrt{2\pi}} \int_{-\infty}^\infty e^{tz\sigma} \cdot e^{t\mu} \cdot e^{- \frac{z^2}{2}} dz \\
+           &= \dfrac{e^{t\mu}}{\sqrt{2\pi}} \int_{-\infty}^\infty e^{-\frac{1}{2} (z^2-2tz\sigma)} dz\\
+           &= \dfrac{e^{t\mu}}{\sqrt{2\pi}} \int_{-\infty}^\infty e^{-\frac{1}{2} (z^2-2tz\sigma + t^2 \sigma^2 -t^2 \sigma^2)} dz\\
+           &= \dfrac{e^{t\mu+\frac{t^2\sigma^2}{2}}}{\sqrt{2\pi}} \int_{-\infty}^\infty e^{-\frac{1}{2} (z-t\sigma)^2} dz\\
+           \text{Let } \theta &= z-t\sigma \\ \implies \; dz &= d\theta \\
+           &= \dfrac{e^{t\mu+\frac{t^2\sigma^2}{2}}}{\sqrt{2\pi}} \int_{-\infty}^\infty e^{-\frac{\theta^2}{2} d\theta} \\
+           &= \dfrac{e^{t\mu+\frac{t^2\sigma^2}{2}}}{\sqrt{2\pi}} \cdot \sqrt{2\pi} \\
+    M_x(t) &= e^{t\mu+\frac{t^2\sigma^2}{2}} \\ \\
+    K_x(t) &= log(M_x(t)) \\
+           &= log(e^{t\mu+\frac{t^2\sigma^2}{2}}) \\
+           &= t\mu+\frac{t^2\sigma^2}{2}
+\end{align*}
+
+Cumulants:
+
+\[
+K_1 = \text{coefficient of } t/1! = \mu
+\]
+
+\[
+K_2 = \text{coefficient of } t^2/2! = \sigma^2
+\]
+
+\[
+K_3 = \text{coefficient of } t^3/3! = 0
+\]
+
+All further cumulants are \(0\).
+
+\paragraph*{Mean Deviation:}
+M.D. from \(\Bar{X}\) is calculated as:
+\[
+\int_{-\infty}^{\infty} |X-\Bar{X}| = \int_{-\infty}^{\infty} |X-\mu|
+\]
+
+\begin{align*}
+    E(|X-\mu|) &= \int_{-\infty}^{\infty} |x-\mu| f(x) dx \\
+               &= \int_{-\infty}^{\infty} |x-\mu| \dfrac{1}{\sigma\sqrt{2\pi}} \; e^{-\frac{1}{2}( \frac{x-\mu}{\sigma})^2} dx \\
+               \text{Let } z &= \frac{x-\mu}{\sigma} \\ \implies x-\mu &= \sigma z \\ \& \; dx &= \sigma dz \\
+               &= \dfrac{1}{\sigma\sqrt{2\pi}} \int_{-\infty}^\infty |z\sigma| e^{- \frac{z^2}{2}} \sigma dz\\
+               &= \dfrac{\sigma}{\sqrt{2\pi}} \int_{-\infty}^\infty |z| e^{- \frac{z^2}{2}} dz\\
+               &= \dfrac{2\sigma}{\sqrt{2\pi}} \int_0^\infty z e^{- \frac{z^2}{2}} dz\\
+               \text{Let } t &= \frac{z^2}{2} \\ \implies \; dz &= dt/z \\
+               &= \sigma \sqrt{\frac{2}{\pi}} \int_0^\infty z e^{-t} \frac{dt}{z} \\
+               &= \sigma \sqrt{\frac{2}{\pi}} \int_0^\infty e^{-t} dt \\
+               &= \sigma \sqrt{\frac{2}{\pi}} \; -e^{-t} \Big|_0^\infty \\
+               &= \sigma \sqrt{\frac{2}{\pi}} (e^{-0} - e^{-\infty}) \\
+    E(|X-\mu|) &= \sigma \sqrt{\frac{2}{\pi}} \approx 0.8 \: \sigma
+\end{align*}
+
+\paragraph*{Central Moments of Normal Distribution:}
+
+
+\textbf{Odd Moments:}
+\begin{align*}
+    \mu_{2n+1} &= E(X-\mu)^{2n+1} \\
+               &= \int_{-\infty}^{\infty} (x-\mu)^{2n+1} \dfrac{1}{\sigma\sqrt{2\pi}} \; e^{-\frac{1}{2}( \frac{x-\mu}{\sigma})^2} dx \\
+               &= \dfrac{1}{\sigma\sqrt{2\pi}} \int_{-\infty}^{\infty} (x-\mu)^{2n+1} e^{-\frac{1}{2}(\frac{x-\mu}{\sigma})^2} dx \\
+               \text{Let } z &= \frac{x-\mu}{\sigma} \\ \implies x-\mu &= \sigma z \\ \& \; dx &= \sigma dz \\
+               &= \frac{1}{\sqrt{2\pi}} \int_{-\infty}^{\infty} (z\sigma)^{2n+1} e^{- \frac{z^2}{2}} dz\\
+    \mu_{2n+1} &= \frac{\sigma^{2n+1}}{\sqrt{2\pi}} \int_{-\infty}^{\infty} z^{2n+1} e^{- \frac{z^2}{2}} dz
+\end{align*}
+
+As \(z^{2n+1}\) is an odd function, and \(e^{- \frac{z^2}{2}}\) is an even function, its product is an odd function. Integrals of odd functions from \(-\infty\) to \(\infty\) are 0. Hence, the integral given equals 0, and \(\mu_{2n+1} = 0 \; \forall \; n \in \mathbb{N}\).
+
+\textbf{Even Moments:}
+\begin{align*}
+    \mu_{2n} &= \int_{-\infty}^{\infty} (x-\mu)^{2n} \dfrac{1}{\sigma\sqrt{2\pi}} \;             e^{-\frac{1}{2}( \frac{x-\mu}{\sigma})^2} dx \\
+             &= \dfrac{1}{\sigma\sqrt{2\pi}} \int_{-\infty}^{\infty} (x-\mu)^{2n} e^{-\frac{1}{2}(\frac{x-\mu}{\sigma})^2} dx \\
+             \text{Let } z &= \frac{x-\mu}{\sigma} \\ \implies x-\mu &= \sigma z \\ \& \; dx &= \sigma dz \\
+             &= \frac{1}{\sqrt{2\pi}} \int_{-\infty}^{\infty} (z\sigma)^{2n} e^{- \frac{z^2}{2}} dz\\
+             &= \frac{\sigma^{2n}}{\sqrt{2\pi}} \int_{-\infty}^{\infty} z^{2n} e^{- \frac{z^2}{2}} dz\\
+             \text{Let } t &= \frac{z^2}{2} \\ \implies \; dz &= dt/\sqrt{2t} \\
+             &= \frac{\sigma^{2n}}{\sqrt{2\pi}} \int_{-\infty}^{\infty} (2t)^n e^{-t} \frac{dt}{\sqrt{2t}}\\
+             &= \frac{2^n \; \sigma^{2n}}{2\sqrt{\pi}} \int_{-\infty}^{\infty} t^{n-\sfrac{1}{2}} \; e^{-t} dt \\
+             &= \frac{2^n \; \sigma^{2n}}{2\sqrt{\pi}} 2 \int_0^{\infty} t^{n-\sfrac{1}{2}} \; e^{-t} dt \\
+    \mu_{2n} &= \frac{2^n \; \sigma^{2n}}{\sqrt{\pi}} \Gamma (n + \sfrac{1}{2})
+\end{align*}
+
+\textbf{Recursive Relation of Even Moments:}
+\begin{align*}
+    \mu_{2n} &= \frac{2^n \; \sigma^{2n}}{\sqrt{\pi}} \Gamma (n + \sfrac{1}{2}) \\
+    \mu_{2n-2} &= \frac{2^{n-1} \; \sigma^{2n-2}}{\sqrt{\pi}} \Gamma (n - \sfrac{1}{2}) \\
+    \implies \frac{\mu_{2n}}{\mu_{2n-2}} &= \frac{2^n \; \sigma^{2n} \Gamma (n + \sfrac{1}{2})}{\sqrt{\pi}} \cdot \frac{\sqrt{\pi}} {2^{n-1} \; \sigma^{2n-2} \Gamma (n - \sfrac{1}{2})} \\
+    &= \frac{2\sigma^2 \Gamma (n + \sfrac{1}{2})}{\Gamma (n - \sfrac{1}{2})} \\
+    &= \frac{2\sigma^2 (n - \sfrac{1}{2} )\Gamma (n - \sfrac{1}{2})}{\Gamma (n - \sfrac{1}{2})} \\
+    \frac{\mu_{2n}}{\mu_{2n-2}} &= 2\sigma^2 (n - \sfrac{1}{2}) \\ \\
+    \text{Or, } \\
+    \mu_{2n} &= \sigma^2 (2n - 1) \cdot \mu_{2n-2}
+\end{align*}
+
+\paragraph*{Addition Property:}
+Theorem: If \(X_1, X_2, X_3, \dots, X_n\) are independent \(N(\mu_i, \sigma^2_i)\) then \(\sum_{i=1}^n a_i X_i \sim N(\sum_{i=1}^n a_i\mu_i, \sum_{i=1}^n a_i^2\sigma^2_i)\). \\
+Proof:
+For Normal Distribution,
+
+\[
+M_x(t) = e^{t\mu+\frac{t^2\sigma^2}{2}}
+\]
+
+\begin{align*}
+    M_{X_1+X_2+\dots+X_n} &= M_{X_1}(t) \cdot M_{X_2}(t) \dots M_{X_n}(t) \\
+                          &= e^{t\mu_1+\frac{t^2\sigma_1^2}{2}} \cdot e^{t\mu_2+\frac{t^2\sigma_2^2}{2}} \cdot \dots \cdot e^{t\mu_n+\frac{t^2\sigma_n^2}{2}} \\
+    M_{\sum_{i=1}^n X_i} &= e^{t(\mu_1+\mu_2+\dots+\mu_n) + \frac{t^2}{2}(\sigma_1^2 + \sigma_2^2 +\dots+ \sigma_n^2)}
+\end{align*}
+
+By Uniqueness Theorem of m.g.f., the m.g.f. of any linear combination of n.r.v's follows normal distribution with mean \(\sum_{i=1}^n a_i\mu_i\) and variance \(\sum_{i=1}^n a_i^2\sigma_i^2)\).
+
+\paragraph*{Skewness and Kurtosis:}
+We know the first four central moments of the normal distribution are:
+\begin{align*}
+    \mu_1 &= 0 \\
+    \mu_2 &= \sigma^2 \\
+    \mu_3 &= 0 \\
+    \mu_4 &= K_4 + K_2^2 \\
+          &= 3\sigma^4
+\end{align*}
+
+This gives us values of skewness and kurtosis:
+\begin{align*}
+    \beta_1 &= \frac{\mu_3^2}{\mu_2^3} \\
+            &= \frac{0}{\sigma^6} \\
+            &= 0 \\ \\
+    \beta_2 &= \frac{\mu^4}{\mu_2^2} \\
+            &= \frac{3\sigma^4}{\sigma^4} \\
+            &= 3
+\end{align*}
+
+As \(\beta_1=0\) and \(\beta_2=3\), we can definitively say that the normal distribution is always symmetric, irrespective of its parameters.
+
+
+\subsubsection*{Log-Normal Distribution:}
+If \(Y=logX \sim N(\mu, \sigma^2), X\) follows lognormal distribution. 
+
+\begin{align*}
+    F_X(X) &= f(X\leq x) \\
+           &= f(logX\leq logx) \\
+           &= f(Y\leq logx) \\
+           &= \int_{-\infty}^{logx} \frac{1}{\sigma\sqrt{2\pi}}\text{exp}\left(-\frac{1}{2} \left(\frac{y-\mu}{\sigma}\right)^2\right)dy
+\end{align*}
+
+\begin{align*}
+    \mu'_r &= E(x^r) \\
+           &= E(e^{yr}) \\
+           &= \text{exp}\left( \mu r + \frac{\sigma^2 r^2}{2} \right)
+\end{align*}
+
+Hence, 
+\begin{align*}
+    E(X)    &= \mu'_1 \\
+            &= \text{exp}\left( \mu + \frac{\sigma^2}{2} \right) \\\\
+    E(X^2)  &= \mu'_2 \\
+            &= \text{exp}[2(\mu + \sigma^2)] \\\\
+    Var(X)  &= \mu'_2 - \mu_1'^2 \\
+            &= \text{exp}[2(\mu + \sigma^2)] - \text{exp}\left( \mu + \frac{\sigma^2}{2} \right)^2
+\end{align*}
+
+\subsubsection*{Cauchy Distribution:}
+If c.r.v \(X\sim C\), then its p.d.f is:
+\[
+    f(x)= 
+\begin{cases}
+    \dfrac{1}{\pi} \dfrac{1}{1+x^2}        & {;-\infty<x<\infty} \\\\
+    0,                                     & ;\text{otherwise}
+\end{cases}
+\]
+
+\[
+X = \frac{Y-\mu}{\sigma}
+\]
+Then, if Y \(\sim C(\lambda, \mu)\), \(X\sim C(1, 0)\).
+And, \(X\) is the standard Cauchy distribution.
+
+\[
+G_Y(Y) = \frac{\lambda}{\pi(\lambda^2+(Y-\mu)^2)}
+\]
+
+Hence,
+\begin{align*}
+    E(Y) &= \int_{-\infty}^{\infty} y \; g(y) dy \\
+         &= \frac{\lambda}{\pi} \int_{-\infty}^{\infty} \frac{y}{(\lambda^2+(y-\mu)^2)} \\
+         &= \frac{\mu\lambda}{\pi} \int_{-\infty}^{\infty} \frac{dy}{(\lambda^2+(y-\mu)^2)} + \frac{\lambda}{\pi} \int_{-\infty}^{\infty} \frac{y-\mu}{(\lambda^2+(y-\mu)^2)}dy \\
+         &= \mu +  \frac{\lambda}{\pi} \int_{-\infty}^{\infty} \frac{z}{(\lambda^2+z^2)}dz
+\end{align*}
+This integral is undefined, hence the first moment i.e. the mean does not exist.
+
+
+
+\newpage
+\paragraph{Bivariate Distributions:}
+If \(X\) and \(Y\) are c.r.v.s, then \(F_{XY}(X, Y)\) is the joint p.d.f. iff
+\[
+0 < f_{XY}(x, y) < 1
+\]
+
+If \(f(X, Y)\) is the joint density function then,
+\[
+\int_X \int_Y f(X, Y) \; dy \; dx = 1
+\]
+
+Marginal p.d.f's are:
+\[
+f_X(x) = \int_Y f(X, Y) \; dy,
+\]
+\[
+f_Y(y) = \int_X f(X, Y) \; dx
+\]
+
+Conditional p.d.f's are:
+\[
+f(Y|X=x) = \frac{f(X, Y)}{f(X=x)}
+\]
+
+\[
+P(x_1 < X < x_2, y_1 < Y < y_2) = F(x_2, y_2) - f(x_1, y_1)
+\]
+
+If \(X\) and \(Y\) are independent, 
+\[
+f_{XY}(x, y) = f_X(x) \cdot f_Y(y) \; \forall \; x, y
+\]
+
+
+\subsubsection*{Bivariate Normal Distribution:}
+If \(X\) \& \(Y\) are jointly distributed with bivariate normal distribution with parameters \((\mu_1, \mu_2, \sigma_1^2, \sigma_2^2, \rho)\), then their j.p.d.f. is:
+
+\[
+f(X, Y) = \frac{1}{2\pi\sigma_1\sigma_2\sqrt{1-\rho^2}} \text{exp} \left\{ -\frac{1}{2(1-\rho^2)} \left[ \left( \frac{x-\mu_1}{\sigma_1} \right)^2 - \frac{2\rho(x-\mu_1)(y-\mu_2)}{\sigma_1\sigma_2} + \left( \frac{y-\mu_2}{\sigma_2} \right)^2 \right]\right\}
+\]
+
+The j.p.d.f. of s.n.b.d. is:
+\[
+f(X, Y) = \frac{1}{2\pi\sqrt{1-\rho^2}} \text{exp} \left\{ -\frac{1}{2(1-\rho^2)} \left[ x^2 - 2\rho x y + y^2 \right]\right\}
+\]
+
+If \(X\) \& \(Y\) are jointly distributed with bivariate normal distribution with joint probability distribution function \(f(X, Y)\), then conditional probability distribution \(P(X|Y)\) is given as:
+
+\[
+\frac{f(X, Y)}{f(Y)} = \frac{1}{\sigma_1 \sqrt{2\pi} \sqrt{1-\rho^2}} \text{exp} \left\{ -\frac{1}{2\sigma_1^2(1-\rho^2)} \left[ x - \left( \mu_1 + \rho \frac{\sigma_1}{\sigma_2} (y-\mu_2) \right) \right]^2 \right\}
+\]
+
+Then, 
+\[
+E(X|Y) = \mu_1 + \rho \frac{\sigma_1}{\sigma_2} (y-\mu_2) 
+\]
+And,
+\[
+Var(X|Y) = \sigma_1^2 (1-\rho^2)
+\]
+\[
+S.D.(X|Y) = \sigma_1 \sqrt{1-\rho^2}
+\]
+
+%----------------------------------------------------------------------------------------
+
+\end{document}
